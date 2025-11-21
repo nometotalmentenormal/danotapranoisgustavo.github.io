@@ -19,7 +19,7 @@ body {
 
 .titulo {
     position: relative;
-    color: ivory;
+    color: #fff;
     font-family: Helvetica;
     font-size: large;
     text-align: center; /* centralizamento da div */
@@ -36,7 +36,7 @@ body {
     transform: translateX(-50%);
     padding: 10px 16px;
     background: rgba(255,255,255,0.06);
-    color: ivory;
+    color: #fff;
     border: 1px solid rgba(255,255,255,0.18);
     border-radius: 8px;
     cursor: pointer;
@@ -53,7 +53,7 @@ body {
     transform-origin: top center;
     transform: translateX(-50%) perspective(600px) rotateX(-90deg) translateY(-10px);
     background: rgba(0,0,0,0.6);
-    color: ivory;
+    color: #fff;
     padding: 10px 14px;
     border-radius: 8px;
     z-index: 2;
@@ -75,4 +75,5 @@ body {
     opacity: 1;
     transform: translateX(-50%) perspective(600px) rotateX(0deg) translateY(0);
     pointer-events: auto;
+
 }
