@@ -1,79 +1,112 @@
-body {
-    display: flex;
-    color: black;
-    background-color: black;
+:root{
+    --bg:#06070a;
+    --muted:rgba(255,255,255,0.85);
+    --accent:#ff6b6b;
+    --card:rgba(0,0,0,0.5);
 }
 
-.fundo {
-    position: absolute;
-    top: 100px;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background-image: url(imagens/logo\ da\ empresa\ sem\ o\ nome.png);
-    background-size: cover; /* preencha a janela com a imagem de fundo*/
-    background-repeat: no-repeat; /* por algum motivo quando a imagem e pequena ela fica se repetindo e isso evita*/
-    filter: blur(3px); /* efeito de blur */
-    z-index: -1; /* garante que essa div fique no fundo */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+    margin:0;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    color:var(--muted);
+    background:var(--bg);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
 }
 
-.titulo {
-    position: relative;
-    color: #fff;
-    font-family: Helvetica;
-    font-size: large;
-    text-align: center; /* centralizamento da div */
-    margin-left: auto; /* centralizamento da div */
-    margin-right: auto; /* centralizamento da div */
-    z-index: 1; /* garante que essa div fique na frente*/
+.fundo{
+    position:fixed;
+    inset:0;
+    background-image: linear-gradient(rgba(6,7,10,0.55), rgba(6,7,10,0.55)), url(imagens/logo\ da\ empresa\ sem\ o\ nome.png);
+    background-size:cover;
+    background-position:center;
+    filter: blur(2px) saturate(1.04);
+    z-index:-1;
 }
 
-/* new styles for bottom button and message */
-#bottom-btn {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 16px;
-    background: rgba(255,255,255,0.06);
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 8px;
-    cursor: pointer;
-    z-index: 2;
-    font-family: inherit;
-    backdrop-filter: blur(4px);
+.site{
+    position:relative;
+    max-width:1100px;
+    margin:0 auto;
+    padding:36px 24px 80px;
 }
 
-.message {
-    position: fixed;
-    bottom: 66px; /* sits above the button */
-    left: 50%;
-    /* start rotated up (rolled) and slightly translated, with origin at the top center */
-    transform-origin: top center;
-    transform: translateX(-50%) perspective(600px) rotateX(-90deg) translateY(-10px);
-    background: rgba(0,0,0,0.6);
-    color: #fff;
-    padding: 10px 14px;
-    border-radius: 8px;
-    z-index: 2;
-    max-width: 90%;
-    text-align: center;
+.site-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{height:44px;width:auto;border-radius:6px}
+.brand-title{font-weight:700;font-size:1.1rem}
 
-    /* hidden by default but present for animation (do not use display:none) */
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
+.main-nav a{color:var(--muted);text-decoration:none;margin-left:16px;font-weight:600}
+.main-nav a:hover{color:var(--accent)}
 
-    /* animate the transform and opacity for a smooth rolling down effect */
-    transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1), opacity 220ms ease;
+.hero{display:flex;align-items:center;min-height:60vh;padding:48px 0}
+.hero-inner{max-width:720px}
+.hero-title{font-size:clamp(2.2rem,4vw,3.6rem);margin:0 0 12px;font-weight:800;letter-spacing:-0.02em}
+.hero-sub{margin:0 0 20px;color:rgba(255,255,255,0.85);line-height:1.5;font-weight:300}
+
+.btn{display:inline-block;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:600}
+.btn.primary{background:var(--accent);color:#111;border:2px solid rgba(0,0,0,0.15);box-shadow:0 6px 18px rgba(0,0,0,0.35)}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--muted);margin-left:12px}
+
+/* bottom floating about button and message */
+#bottom-btn{
+    position:fixed;right:24px;bottom:24px;padding:10px 14px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.06);color:var(--muted);cursor:pointer;z-index:40;backdrop-filter:blur(6px)
 }
 
-/* visible state — rotates down into place */
-.message.show {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) perspective(600px) rotateX(0deg) translateY(0);
-    pointer-events: auto;
-
+.message{
+    position:fixed;right:24px;bottom:76px;transform-origin:top right;max-width:320px;background:var(--card);padding:12px 14px;border-radius:10px;color:var(--muted);z-index:40;visibility:hidden;opacity:0;pointer-events:none;transition:transform 320ms cubic-bezier(.22,1,.36,1),opacity 240ms ease,visibility 0s linear 320ms;transform:translateY(-8px) scale(.98)
 }
+.message.show{visibility:visible;opacity:1;pointer-events:auto;transform:translateY(0) scale(1);transition-delay:0s}
+
+.site-footer{margin-top:48px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.03);color:rgba(255,255,255,0.6);text-align:center}
+
+@media (max-width:720px){
+    .main-nav{display:none}
+    .hero{min-height:56vh}
+    .site{padding:24px}
+    #bottom-btn{right:16px;bottom:16px}
+    .message{right:16px;bottom:64px;max-width:260px}
+}
+
+/* Projects */
+.projects{padding:40px 0}
+.projects-inner{max-width:1000px;margin:0 auto}
+.projects h2{font-size:1.6rem;margin:0 0 6px}
+.projects-intro{margin:0 0 20px;color:rgba(255,255,255,0.75);font-weight:300}
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.project-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.25));border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.45);display:flex;flex-direction:column}
+.project-image{width:100%;height:160px;object-fit:cover;display:block}
+.project-body{padding:12px}
+.project-title{margin:0 0 6px;font-size:1.05rem}
+.project-desc{margin:0 0 10px;color:rgba(255,255,255,0.75);font-size:0.95rem}
+.project-cta{display:inline-block;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.04);color:var(--muted);text-decoration:none;border:1px solid rgba(255,255,255,0.04);font-weight:600}
+
+@media (max-width:980px){
+    .project-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+    .project-grid{grid-template-columns:1fr}
+    .project-image{height:200px}
+}
+
+/* About section */
+.about{padding:36px 0}
+.about-inner{max-width:860px;margin:0 auto;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.18));padding:18px;border-radius:10px}
+.about h2{margin:0 0 8px;font-size:1.3rem}
+.about p{margin:0;color:rgba(255,255,255,0.85);line-height:1.6}
+
+/* Modal styles */
+.modal{display:none;position:fixed;inset:0;align-items:center;justify-content:center;z-index:60}
+.modal.show{display:flex}
+.modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.6)}
+.modal-panel{position:relative;background:linear-gradient(180deg,#0c0d10,#0a0b0e);color:var(--muted);max-width:720px;width:94%;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.6);padding:22px;z-index:61}
+.modal-close{position:absolute;top:12px;right:12px;background:transparent;border:0;color:var(--muted);font-size:26px;line-height:1;cursor:pointer}
+.modal-body{margin-top:12px;color:rgba(255,255,255,0.9);line-height:1.6}
+.modal-panel h3{margin:0;font-size:1.15rem}

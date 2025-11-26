@@ -1,25 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Death Whisper</title>
+    <title>Death Whisper — Estúdio de Jogos</title>
+    <meta name="description" content="Death Whisper — estúdio de jogos de terror com abordagem cinematográfica. Saiba mais sobre nosso trabalho e história.">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <!-- Linkagem do arquivo css -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!--div para a imagem de fundo xdddddd-->
-    <div class="fundo"></div>
+    <div class="fundo" aria-hidden="true"></div>
 
-    <div class="titulo">
-        <h1>Death Whisper</h1>
+    <div class="site">
+        <header class="site-header">
+            <div class="brand">
+                <!--<img src="imagens/logo\ da\ empresa.png" alt="Death Whisper logo" class="logo"> -->
+                <span class="brand-title">Death Whisper</span>
+            </div>
+            <nav class="main-nav" aria-label="Menu principal">
+                <a href="#home">Início</a>
+                <a href="#projects">Projetos</a>
+                <a href="#" id="nav-about">Sobre</a>
+                <a href="#contact">Contato</a>
+            </nav>
+        </header>
+
+        <main class="hero" id="home">
+                        <div class="hero-inner">
+                                <h1 class="hero-title">Death Whisper</h1>
+                                <p class="hero-sub">Estúdio de jogos de terror com identidade cinematográfica. Criamos experiências imersivas pensadas para jogadores que buscam atmosfera e narrativa.</p>
+                                <div class="hero-cta">
+                                        <a class="btn primary" href="#" id="learn-more">Saiba mais</a>
+                                        <a class="btn ghost" href="#contact">Contato</a>
+                                </div>
+                        </div>
+                </main>
+
+                        <!-- About content is shown in a modal now -->
+
+                <!-- Projects section -->
+                <section id="projects" class="projects" aria-labelledby="projects-title">
+                    <div class="projects-inner">
+                        <h2 id="projects-title">Projetos</h2>
+                        <p class="projects-intro">Trabalhos selecionados que demonstram nossa abordagem cinematográfica e foco em atmosfera.</p>
+
+                        <div class="project-grid">
+                            <article class="project-card">
+                                <img class="project-image" src="imagens/vessel-of-regret.jpg" alt="Vessel of Regret imagem">
+                                <div class="project-body">
+                                    <h3 class="project-title">Vessel of Regret</h3>
+                                    <p class="project-desc">Uma experiência de terror psicológico com narrativa não-linear e trilha sonora imersiva.</p>
+                                    <button class="project-cta" type="button" data-project="vessel">Ver detalhes</button>
+                                </div>
+                            </article>
+
+                            <article class="project-card">
+                                <img class="project-image" src="imagens/logo\ da\ empresa\ sem\ o\ nome.png" alt="Projeto - Em breve">
+                                <div class="project-body">
+                                    <h3 class="project-title">Em breve</h3>
+                                    <p class="project-desc">Experiência episódica com cenários cinematográficos e mecânicas de tensão. Disponível em breve.</p>
+                                </div>
+                            </article>
+
+                            <article class="project-card">
+                                <img class="project-image" src="imagens/gif\ da\ logo\ da\ empresa.gif" alt="Projeto - Em breve">
+                                <div class="project-body">
+                                    <h3 class="project-title">Em breve</h3>
+                                    <p class="project-desc">Protótipo experimental focado em iluminação dinâmica e performance em máquinas de baixa especificação. Disponível em breve.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- removed floating 'Sobre nós' button and inline message (converted to About section) -->
+
+                <!-- Project details modal -->
+                <div id="project-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="project-modal-title">
+                    <div class="modal-backdrop" data-close></div>
+                    <div class="modal-panel">
+                        <button class="modal-close" aria-label="Fechar" data-close>&times;</button>
+                        <h3 id="project-modal-title">Vessel of Regret — Detalhes</h3>
+                        <div class="modal-body">
+                            <p>Elena enfrenta a verdade sobre o acidente e descobre que não foi responsável, mas sim manipulada. Com o Relicário se desfazendo, ela escapa do Limbo do Suplício, mas encontra Lucas, que a espera com olhos vazios, pedindo que ela "termine o que começou".</p>
+                        </div>
+                    </div>
+                </div>
+
+                                <!-- About modal -->
+                                <div id="about-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="about-modal-title">
+                                    <div class="modal-backdrop" data-close></div>
+                                    <div class="modal-panel">
+                                        <button class="modal-close" aria-label="Fechar" data-close>&times;</button>
+                                        <h3 id="about-modal-title">Sobre nós</h3>
+                                        <div class="modal-body">
+                                            <p>Criada em 1995 como uma subsidiária focada no desenvolvimento de jogos de terror com forte apelo cinematográfico. Hoje lançamos nossos próprios títulos, combinando experiência técnica e narrativa.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                <footer class="site-footer">
+                        <small>© <span id="year"></span> Death Whisper — Todos os direitos reservados.</small>
+                </footer>
     </div>
-
-    <!-- bottom button fixed and message container -->
-    <button id="bottom-btn" aria-expanded="false">Sobre nos</button>
-    <div id="message" class="message" aria-hidden="true">Criada em 1995, como uma subsidiaria da empresa Microsoft focada em desenvolvimento de jogos de terror com cenas cinematográficas, ela colaborou com o desenvolvimento de vários jogos famosos mesmo não fazendo parte de seus objetivos principais, hoje ela lança seu próprio jogo com esses vastos anos de experiencia.</div>
 
     <!-- Linkagem do arquivo js -->
     <script src="script.js"></script>
+    <script>
+      // atualiza o ano no rodapé automaticamente
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
