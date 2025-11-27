@@ -72,4 +72,54 @@ document.addEventListener('DOMContentLoaded', () => {
   const learnMore = document.getElementById('learn-more');
   if (navAbout) navAbout.addEventListener('click', (e) => { e.preventDefault(); openAboutModal(); });
   if (learnMore) learnMore.addEventListener('click', (e) => { e.preventDefault(); openAboutModal(); });
+
+  // Contact modal
+  const contactModal = document.getElementById('contact-modal');
+  const contactCloseElements = contactModal ? contactModal.querySelectorAll('[data-close]') : [];
+  const contactForm = document.getElementById('contact-form');
+
+  function openContactModal() {
+    if (!contactModal) return;
+    lastActiveElement = document.activeElement;
+    contactModal.classList.add('show');
+    contactModal.setAttribute('aria-hidden', 'false');
+    const closeBtn = contactModal.querySelector('.modal-close');
+    if (closeBtn) closeBtn.focus();
+    document.addEventListener('keydown', handleContactKeyDown);
+  }
+
+  function closeContactModal() {
+    if (!contactModal) return;
+    contactModal.classList.remove('show');
+    contactModal.setAttribute('aria-hidden', 'true');
+    document.removeEventListener('keydown', handleContactKeyDown);
+    if (lastActiveElement && typeof lastActiveElement.focus === 'function') lastActiveElement.focus();
+  }
+
+  function handleContactKeyDown(e) {
+    if (e.key === 'Escape') closeContactModal();
+  }
+
+  contactCloseElements.forEach(el => el.addEventListener('click', closeContactModal));
+
+  // open contact modal from nav and hero
+  const navContact = document.getElementById('nav-contact');
+  const heroContact = document.getElementById('hero-contact');
+  if (navContact) navContact.addEventListener('click', (e) => { e.preventDefault(); openContactModal(); });
+  if (heroContact) heroContact.addEventListener('click', (e) => { e.preventDefault(); openContactModal(); });
+
+  // handle form submit by opening mailto: with encoded fields
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = contactForm.elements['name'].value.trim();
+      const message = contactForm.elements['message'].value.trim();
+      const subject = encodeURIComponent('Contato — Death Whisper');
+      const body = encodeURIComponent(`Nome: ${name}\n\n${message}`);
+      // open the user's email client
+      window.location.href = `mailto:deathwhisper@rnicrosoft.com?subject=${subject}&body=${body}`;
+      // close modal after attempt
+      closeContactModal();
+    });
+  }
 });

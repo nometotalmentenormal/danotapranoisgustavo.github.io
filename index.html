@@ -25,7 +25,7 @@
                 <a href="#home">Início</a>
                 <a href="#projects">Projetos</a>
                 <a href="#" id="nav-about">Sobre</a>
-                <a href="#contact">Contato</a>
+                <a href="#" id="nav-contact">Contato</a>
             </nav>
         </header>
 
@@ -35,7 +35,7 @@
                                 <p class="hero-sub">Estúdio de jogos de terror com identidade cinematográfica. Criamos experiências imersivas pensadas para jogadores que buscam atmosfera e narrativa.</p>
                                 <div class="hero-cta">
                                         <a class="btn primary" href="#" id="learn-more">Saiba mais</a>
-                                        <a class="btn ghost" href="#contact">Contato</a>
+                                        <a class="btn ghost" href="#" id="hero-contact">Contato</a>
                                 </div>
                         </div>
                 </main>
@@ -99,6 +99,32 @@
                                         <h3 id="about-modal-title">Sobre nós</h3>
                                         <div class="modal-body">
                                             <p>Criada em 1995 como uma subsidiária focada no desenvolvimento de jogos de terror com forte apelo cinematográfico. Hoje lançamos nossos próprios títulos, combinando experiência técnica e narrativa.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Contact modal -->
+                                <div id="contact-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="contact-modal-title">
+                                    <div class="modal-backdrop" data-close></div>
+                                    <div class="modal-panel">
+                                        <button class="modal-close" aria-label="Fechar" data-close>&times;</button>
+                                        <h3 id="contact-modal-title">Contato</h3>
+                                        <div class="modal-body">
+                                            <form id="contact-form" class="contact-form">
+                                                <div class="form-row">
+                                                    <label for="contact-name">Nome</label>
+                                                    <input id="contact-name" name="name" type="text" required>
+                                                </div>
+                                                <!-- email field removed: not collected -->
+                                                <div class="form-row">
+                                                    <label for="contact-message">Mensagem</label>
+                                                    <textarea id="contact-message" name="message" rows="5" required></textarea>
+                                                </div>
+                                                <div class="form-actions">
+                                                    <button type="submit" class="btn primary">Enviar por e‑mail</button>
+                                                    <button type="button" class="btn ghost" data-close>Cancelar</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
